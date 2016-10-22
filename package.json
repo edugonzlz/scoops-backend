@@ -1,0 +1,23 @@
+{
+  "name": "scoops-backend",
+  "version": "1.0.0",
+  "description": "Backend node.js en Azure-Mobile-Apps para la app iOS scoops",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/edugonzlz/scoops-backend.git"
+  },
+  "author": "edu-gonzalez",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/edugonzlz/scoops-backend/issues"
+  },
+  "homepage": "https://github.com/edugonzlz/scoops-backend#readme",
+  "dependencies": {
+    "azure-mobile-apps": "^3.0.1",
+    "express": "^4.14.0"
+  }
+}
