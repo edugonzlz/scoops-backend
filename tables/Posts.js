@@ -17,7 +17,7 @@ table.columns = {
     "creationDate":"number"
 };
 
-table.dynamicSchema = false;
+// table.dynamicSchema = true;
 
 table.read.access = 'anonymous';
 table.update.access = 'authenticated';
