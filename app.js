@@ -2,12 +2,11 @@
  * Created by Edu on 22/10/16.
  */
 
-var express = require("express"),
-    azuremobileapps = require("azure-mobile-apps");
+var express = require("express");
+var azure = require("azure-mobile-apps");
 
-var app = express(),
-    mobile = azuremobileapps();
-// { swagger: process.env.NODE_ENV !== 'production'}
+var app = express();
+var mobile = azure();
 
 mobile.tables.import("./tables");
 
