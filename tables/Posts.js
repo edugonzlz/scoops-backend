@@ -22,6 +22,6 @@ table.dynamicSchema = false;
 table.read.access = 'anonymous';
 table.update.access = 'authenticated';
 table.delete.access = 'authenticated';
-table.insert.access = 'anonymous';
+table.insert.access = 'authenticated';
 
 module.exports = table;
