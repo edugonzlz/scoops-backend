@@ -13,7 +13,7 @@ var getPost = {
         var user = context.user.id;
 
         var query = {
-            sql: "Select * FROM Posts WHERE=@id",
+            sql: "Select * FROM Posts WHERE id=@id",
             parameters:[{name:"id", value: req.query.id}]
         };
 
