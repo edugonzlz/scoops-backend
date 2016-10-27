@@ -1,18 +1,19 @@
 /**
- * Created by Edu on 24/10/16.
+ * Created by Edu on 27/10/16.
  */
 
-var getPosts = {
+var getPost = {
     get: function (req, res, next) {
 
-        if (typeof req.params.length < 0) {
+        if (typeof request.params.id === 'undefined')
             return next();
-        }
+
         var context = req.azureMobile;
         var user = context.user.id;
 
         var query = {
-            sql: "Select * FROM Posts"
+            sql: "Select * FROM Posts",
+            parameters: [{id: req.params.id}]
         };
 
         req.azureMobile.data.execute(query)
@@ -22,5 +23,5 @@ var getPosts = {
     }
 };
 
-getPosts.get.access = 'anonymous';
-module.exports = getPosts;
+getPost.get.access = 'anonymous';
+module.exports = getPost;
