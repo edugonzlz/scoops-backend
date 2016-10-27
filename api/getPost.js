@@ -13,8 +13,8 @@ var getPost = {
         var user = context.user.id;
 
         var query = {
-            sql: "Select * FROM Posts WHERE='id'",
-            parameters:[{id: req.query.id}]
+            sql: "Select * FROM Posts WHERE=@id",
+            parameters:[{name:"id", value: req.query.id}]
         };
 
         req.azureMobile.data.execute(query)
