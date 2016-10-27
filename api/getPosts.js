@@ -12,7 +12,7 @@ var getPosts = {
         var user = context.user.id;
 
         var query = {
-            sql: "Select id,title,author,photoURL,createdAt FROM Posts ORDER BY createdAt DESC"
+            sql: "SELECT id,title,author,photoURL,createdAt,publicated FROM Posts ORDER BY createdAt DESC"
         };
 
         req.azureMobile.data.execute(query)
