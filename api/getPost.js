@@ -6,15 +6,15 @@ var getPost = {
     get: function (req, res, next) {
 
         console.log("IDD" + req.query.id);
-        if (typeof request.params.id === 'undefined')
-            return next();
+        // if (typeof request.params.id === 'undefined')
+        //     return next();
 
         var context = req.azureMobile;
         var user = context.user.id;
 
         var query = {
             sql: "Select * FROM Posts",
-            parameters: [{id: req.params.id}]
+            parameters: [{id: req.query.id}]
         };
 
         req.azureMobile.data.execute(query)
