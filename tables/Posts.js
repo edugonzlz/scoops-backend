@@ -13,8 +13,7 @@ table.columns = {
     "longitude": "number",
     "author": "string",
     "publicated": "bool",
-    "score": "number",
-    "creationDate":"number"
+    "score": "number"
 };
 
 table.dynamicSchema = false;

@@ -5,7 +5,6 @@
 var getPost = {
     get: function (req, res, next) {
 
-        console.log("ID" + req.query.id);
         // if (typeof request.params.id === 'undefined')
         //     return next();
 
