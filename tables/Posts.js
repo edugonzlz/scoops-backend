@@ -15,7 +15,8 @@ table.columns = {
     "publicated": "bool",
     "score": "number",
     "totalScore": "number",
-    "numberOfRatings": "number"
+    "numberOfRatings": "number",
+    "userId":"string"
 };
 
 table.dynamicSchema = false;
