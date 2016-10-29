@@ -16,7 +16,7 @@ table.columns = {
     "score": "number",
     "totalScore": "number",
     "numberOfRatings": "number",
-    "userId":"string"
+    "userId": "string"
 };
 
 table.dynamicSchema = false;

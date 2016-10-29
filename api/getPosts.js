@@ -13,6 +13,7 @@ var getPosts = {
         var query;
         // si existe user entregamos solo los de su id
         if (context.user.id !== 'undefined') {
+            console.log("UserId: " + context.user.id);
             query = {
                 // id,title,author,photoURL,createdAt,publicated
                 sql: "SELECT * FROM Posts WHERE userId=@id ORDER BY createdAt DESC",
