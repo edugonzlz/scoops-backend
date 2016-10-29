@@ -8,8 +8,9 @@ var getPosts = {
         if (typeof req.params.length < 0) {
             return next();
         }
-        var context = req.azureMobile;
-        var user = context.user.id;
+        
+        // var context = req.azureMobile;
+        // var user = context.user.id;
 
         var query = {
             // id,title,author,photoURL,createdAt,publicated
