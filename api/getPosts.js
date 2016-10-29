@@ -23,6 +23,5 @@ var getPosts = {
     }
 };
 
-// getPosts.get.access = 'anonymous';
-getpPosts.access = 'anonymous';
+getPosts.get.access = 'anonymous';
 module.exports = getPosts;
