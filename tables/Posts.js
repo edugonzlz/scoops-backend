@@ -13,7 +13,9 @@ table.columns = {
     "longitude": "number",
     "author": "string",
     "publicated": "bool",
-    "score": "number"
+    "score": "number",
+    "totalScore": "number",
+    "numberOfRatings": "number"
 };
 
 table.dynamicSchema = false;

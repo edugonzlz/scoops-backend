@@ -12,6 +12,7 @@ var getPosts = {
         var user = context.user.id;
 
         var query = {
+            // id,title,author,photoURL,createdAt,publicated
             sql: "SELECT * FROM Posts ORDER BY createdAt DESC"
         };
 
@@ -22,5 +23,6 @@ var getPosts = {
     }
 };
 
-getPosts.get.access = 'anonymous';
+// getPosts.get.access = 'anonymous';
+getpPosts.access = 'anonymous';
 module.exports = getPosts;

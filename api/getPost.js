@@ -12,6 +12,8 @@ var getPost = {
         var user = context.user.id;
 
         var query = {
+            // id,title,author,body,photoURL,createdAt,publicated, latitude, longitude, score
+
             sql: "Select * FROM Posts WHERE id=@id",
             parameters:[{name:"id", value: req.query.id}]
         };
