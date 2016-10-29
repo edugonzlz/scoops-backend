@@ -24,7 +24,7 @@ var getPosts = {
         // si somos anonimos entregamos solo publicados
         else if (context.user.id === 'undefined') {
             query = {
-                sql: "SELECT * FROM Posts WHERE publicated='true' ORDER BY createdAt DESC"
+                sql: "SELECT * FROM Posts WHERE publicated='1' ORDER BY createdAt DESC"
             }
         }
 

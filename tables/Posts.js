@@ -19,7 +19,7 @@ table.columns = {
     "userId": "string"
 };
 
-table.dynamicSchema = true;
+table.dynamicSchema = false;
 
 table.read.access = 'anonymous';
 table.update.access = 'authenticated';
