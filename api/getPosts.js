@@ -18,8 +18,10 @@ var getPosts = {
                 sql: "SELECT * FROM Posts WHERE userId=@id ORDER BY createdAt DESC",
                 parameters: [{name:"id", value:context.user.id}]
             };
+        }
+
         // si somos anonimos entregamos solo publicados
-        } else if (context.user.id === 'undefined') {
+        else if (context.user.id === 'undefined') {
             query = {
                 sql: "SELECT * FROM Posts WHERE publicated='true' ORDER BY createdAt DESC"
             }
