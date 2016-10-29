@@ -22,7 +22,7 @@ var getPosts = {
         }
 
         // si somos anonimos entregamos solo publicados
-        else if (context.user.id === 'undefined') {
+        else if (context.user === 'undefined') {
             query = {
                 sql: "SELECT * FROM Posts WHERE publicated=@public ORDER BY createdAt DESC",
                 parameters:[{name:"public", value:1}]
