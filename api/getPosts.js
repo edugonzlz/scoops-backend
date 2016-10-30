@@ -18,10 +18,10 @@ var getPosts = {
                 sql: "SELECT * FROM Posts WHERE publicated=@public ORDER BY createdAt DESC",
                 parameters:[{name:"public", value:1}]
             }
-        } else if (context.user !== undefined) {
+        } 
         // si existe user entregamos solo los de su id
-            console.log("Usuario Autenticado: " + context.user);
-            console.log("UserId: " + context.user.id);
+        else if (context.user !== undefined) {
+            console.log("Usuario Autenticado: " + context.user + " / UserId: " + context.user.id);
             query = {
                 // id,title,author,photoURL,createdAt,publicated
                 sql: "SELECT * FROM Posts WHERE userId=@id ORDER BY createdAt DESC",

@@ -9,9 +9,6 @@ var getPost = {
             return next();
         }
 
-        // var context = req.azureMobile;
-        // var user = context.user.id;
-
         var query = {
             // id,title,author,body,photoURL,createdAt,publicated, latitude, longitude, score
 
