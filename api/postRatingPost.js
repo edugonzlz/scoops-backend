@@ -9,12 +9,12 @@ var postRatingPost = {
             return next();
         }
 
-        console.log("**ID: " + req.query.id + " rating: " + req.query.rating);
+        console.log("**PostId: " + req.query.id + " ratingDeEntrada: " + req.query.rating);
 
         // 1- buscamos el post con el id de la query
         var query = {
         // 2- recogemos sus datos de valoracion
-            sql: "Select id,score,totalScore,numberOfRatings FROM Posts WHERE id=@id",
+            sql: "SELECT id,score,totalScore,numberOfRatings FROM Posts WHERE id=@id",
             parameters:[{name:"id", value: req.query.id}]
         };
         // req.service.msql.query( querySQL,
@@ -28,11 +28,10 @@ var postRatingPost = {
                 var finalRating;
                 var totalRating;
                 var numberOfRates;
-                console.log("**Post: " + post.title);
 
                 // 3- calculamos rating con los datos de la query
                 if (post !== undefined) {
-                    console.log("**total: " + post.score +  " number: " + post.numberOfRatings);
+                    console.log("**Post: " + post.title + " total: " + post.score +  " number: " + post.numberOfRatings);
 
                     // comprobar si el score es -1 y ponerlo a 0 en ese caso
                     if (post.score == -1) {
