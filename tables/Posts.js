@@ -21,6 +21,16 @@ table.columns = {
 
 table.dynamicSchema = false;
 
+table.insert(function (context) {
+
+    if (context.item.numberOfRatings === undefined) {
+        context.item.numberOfRatings = 0;
+        context.item.totalScore = 0;
+        context.item.score = -1;
+    }
+    return context.execute();
+});
+
 table.read.access = 'anonymous';
 table.update.access = 'authenticated';
 table.delete.access = 'authenticated';
