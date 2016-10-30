@@ -21,14 +21,14 @@ var postRatingPost = {
             .then(function (results) {
                 console.log("**Post: " + results);
 
-                var post = results;
+                var post = json(results);
                 var rating;
                 var ratingTotal;
                 var numberOfRates;
 
                 // 3- calculamos rating con los datos de la query
                 if (post !== undefined) {
-                    console.log("**total: " + post["score"] +  " number: " + post["numberOfRatings"]);
+                    console.log("**total: " + post.score +  " number: " + post["numberOfRatings"]);
 
                     ratingTotal = post.score + parseInt(req.query.rating);
                     numberOfRates = post.numberOfRatings + 1;
