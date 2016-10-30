@@ -16,7 +16,7 @@ var postRatingPost = {
         // 1- buscamos el post con el id de la query
         var query = {
         // 2- recogemos sus datos de valoracion
-            sql: "SELECT id,score,totalScore,numberOfRatings FROM Posts WHERE id=@id",
+            sql: "SELECT id,score,totalScore,numberOfRatings,userId FROM Posts WHERE id=@id",
             parameters:[{name:"id", value: postId}]
         };
         // req.service.msql.query( querySQL,
@@ -30,6 +30,7 @@ var postRatingPost = {
                 var finalRating;
                 var totalRating;
                 var numberOfRates;
+                var userId = post.userId;
 
                 // 3- calculamos rating con los datos de la query
                 if (post !== undefined) {
@@ -59,6 +60,16 @@ var postRatingPost = {
                     .then(function (results) {
                         var updatedPost = results[0];
                         console.log("**RatingResults: " + updatedPost.score);
+
+                        // Enviamos notificacion
+                        if (context.push) {
+                            // Deberiamos enviar al usuario de la noticia valorada
+                            context.push.send(userId, payload, function (error) {
+                                if (error) {
+                                    console.log("Error enviando notificacion: " + error);
+                                }
+                            });
+                        }
                        res.json(results)
                     });
             });
