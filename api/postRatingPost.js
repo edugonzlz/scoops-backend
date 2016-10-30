@@ -48,10 +48,10 @@ var postRatingPost = {
                 // 4- actualizamos el post
                 // actualizamos score, totalScore, numberOfRatings
                 var queryUpdate = {
-                    sql: "UPDATE Posts SET score=@rating totalScore=@totalScore numberOfRatings=@numberOfRatings WHERE id=@id",
+                    sql: "UPDATE Posts SET score=@rating,totalScore=@totalRating,numberOfRatings=@numberOfRatings WHERE id=@id",
                     parameters:[{name:"id", value: req.query.id},
                         {name:"rating", value:finalRating},
-                        {name:"totalScore", value: totalRating},
+                        {name:"totalRating", value: totalRating},
                         {name:"numberOfRates", value:numberOfRates}]
                 };
                 req.azureMobile.data.execute(queryUpdate)
