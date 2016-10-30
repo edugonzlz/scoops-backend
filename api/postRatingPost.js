@@ -21,7 +21,7 @@ var postRatingPost = {
             .then(function (results) {
                 console.log("**Post: " + results);
 
-                var post = json(results);
+                var post = results;
                 var rating;
                 var ratingTotal;
                 var numberOfRates;
