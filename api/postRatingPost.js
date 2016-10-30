@@ -22,13 +22,13 @@ var postRatingPost = {
 
         req.azureMobile.data.execute(query)
             .then(function (results) {
-                console.log("**Post: " + results[0]);
 
                 var post = results[0];
                 var initialScore;
                 var finalRating;
                 var totalRating;
                 var numberOfRates;
+                console.log("**Post: " + post.title);
 
                 // 3- calculamos rating con los datos de la query
                 if (post !== undefined) {
@@ -44,7 +44,7 @@ var postRatingPost = {
                     numberOfRates = post.numberOfRatings + 1;
                     finalRating = (totalRating)/(numberOfRates);
                 }
-
+                console.log("**finalRating: " + finalRating + " totalRating: " + totalRating + " numberOfRates: " + numberOfRates);
                 // 4- actualizamos el post
                 // actualizamos score, totalScore, numberOfRatings
                 var queryUpdate = {
@@ -56,6 +56,8 @@ var postRatingPost = {
                 };
                 req.azureMobile.data.execute(queryUpdate)
                     .then(function (results) {
+                        var updatedPost = results[0];
+                        console.log("**RatingResults: " + updatedPost.score);
                        res.json(results)
                     });
             });
