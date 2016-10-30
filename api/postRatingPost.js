@@ -10,6 +10,7 @@ var postRatingPost = {
         }
 
         console.log("**ID: " + req.query.id + " rating: " + req.query.rating);
+
         // 1- buscamos el post con el id de la query
         var query = {
         // 2- recogemos sus datos de valoracion
@@ -17,25 +18,29 @@ var postRatingPost = {
             parameters:[{name:"id", value: req.query.id}]
         };
 
-        var context = req.azureMobile;
-
         req.azureMobile.data.execute(query)
             .then(function (results) {
-                console.log("**Post: " + typeof results);
+                console.log("**Post: " + results);
 
                 var post = results;
-                var rating;
-                var ratingTotal;
+                var initialScore;
+                var finalRating;
+                var totalRating;
                 var numberOfRates;
 
                 // 3- calculamos rating con los datos de la query
                 if (post !== undefined) {
                     // comprobar si el score es -1 y ponerlo a 0 en ese caso
-                    console.log("**total: " + post["score"] +  " number: " + post["numberOfRatings"]);
+                    console.log("**total: " + post.score +  " number: " + post.numberOfRatings);
 
-                    ratingTotal = post.score + parseInt(req.query.rating);
+                    if (post.score == -1) {
+                        initialScore = 0;
+                    } else {
+                        initialScore = post.score;
+                    }
+                    totalRating = initialScore + parseInt(req.query.rating);
                     numberOfRates = post.numberOfRatings + 1;
-                    rating = (ratingTotal)/(numberOfRates);
+                    finalRating = (totalRating)/(numberOfRates);
                 }
 
                 // 4- actualizamos el post
@@ -43,8 +48,8 @@ var postRatingPost = {
                 var queryUpdate = {
                     sql: "UPDATE Posts SET score=@rating totalScore=@totalScore numberOfRatings=@numberOfRatings WHERE id=@id",
                     parameters:[{name:"id", value: req.query.id},
-                        {name:"rating", value:rating},
-                        {name:"totalScore", value: ratingTotal},
+                        {name:"rating", value:finalRating},
+                        {name:"totalScore", value: totalRating},
                         {name:"numberOfRates", value:numberOfRates}]
                 };
                 req.azureMobile.data.execute(queryUpdate)
@@ -52,9 +57,7 @@ var postRatingPost = {
                        res.json(results)
                     });
             });
-
     }
-
 };
 
 module.exports = postRatingPost;
