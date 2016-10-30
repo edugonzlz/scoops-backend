@@ -13,7 +13,7 @@ var getPosts = {
         var query;
         // si existe user entregamos solo los de su id
         console.log("User: " + context.user);
-        if (context.user.id !== 'undefined') {
+        if (context.user !== 'undefined') {
             console.log("UserId: " + context.user.id);
             query = {
                 // id,title,author,photoURL,createdAt,publicated
