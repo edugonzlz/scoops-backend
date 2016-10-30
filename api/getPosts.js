@@ -12,7 +12,8 @@ var getPosts = {
         var context = req.azureMobile;
         var query;
         // si existe user entregamos solo los de su id
-        if (context.user !== 'undefined') {
+        console.log("User: " + context.user);
+        if (context.user.id !== 'undefined') {
             console.log("UserId: " + context.user.id);
             query = {
                 // id,title,author,photoURL,createdAt,publicated
