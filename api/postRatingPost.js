@@ -49,9 +49,9 @@ var postRatingPost = {
                 // 4- actualizamos el post
                 // actualizamos score, totalScore, numberOfRatings
                 var queryUpdate = {
-                    sql: "UPDATE Posts SET score=@rating,totalScore=@totalRating,numberOfRatings=@numberOfRatings WHERE id=@id",
+                    sql: "UPDATE Posts SET score=@rating, totalScore=@totalRating, numberOfRatings=@numberOfRates WHERE id=@id",
                     parameters:[{name:"id", value: postId},
-                        {name:"rating", value:finalRating},
+                        {name:"rating", value: finalRating},
                         {name:"totalRating", value: totalRating},
                         {name:"numberOfRates", value:numberOfRates}]
                 };
