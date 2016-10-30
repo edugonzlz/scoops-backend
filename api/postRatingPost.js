@@ -17,8 +17,8 @@ var postRatingPost = {
             sql: "Select id,score,totalScore,numberOfRatings FROM Posts WHERE id=@id",
             parameters:[{name:"id", value: req.query.id}]
         };
-        req.service.msql.query( querySQL,
-            { success: {} , error: {} });
+        // req.service.msql.query( querySQL,
+        //     { success: {} , error: {} });
 
         req.azureMobile.data.execute(query)
             .then(function (results) {
