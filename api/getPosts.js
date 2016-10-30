@@ -24,7 +24,7 @@ var getPosts = {
             console.log("Usuario Autenticado: " + context.user + " / UserId: " + context.user.id);
             query = {
                 // id,title,author,photoURL,createdAt,publicated
-                sql: "SELECT * FROM Posts WHERE userId=@id ORDER BY createdAt DESC",
+                sql: "SELECT id,title,author,photoURL,createdAt,publicated FROM Posts WHERE userId=@id ORDER BY createdAt DESC",
                 parameters: [{name:"id", value:context.user.id}]
             };
         }
