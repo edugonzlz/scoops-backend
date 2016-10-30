@@ -8,7 +8,6 @@ var postRatingPost = {
         if (typeof req.params.length < 0) {
             return next();
         }
-        var context = req.azureMobile;
 
         console.log("**ID: " + req.query.id + " rating: " + req.query.rating);
         // 1- buscamos el post con el id de la query
@@ -17,33 +16,40 @@ var postRatingPost = {
             sql: "Select id,score,totalScore,numberOfRatings FROM Posts WHERE id=@id",
             parameters:[{name:"id", value: req.query.id}]
         };
+
         req.azureMobile.data.execute(query)
             .then(function (results) {
                 console.log("**Post: " + results);
+
+                var post = results;
+                var rating;
+                var ratingTotal;
+                var numberOfRates;
+
+                // 3- calculamos rating con los datos de la query
+                if (post !== undefined) {
+                    console.log("**total: " + post.score +  "number: " + post.numberOfRatings);
+
+                    ratingTotal = post.score + parseInt(req.query.rating);
+                    numberOfRates = post.numberOfRatings + 1;
+                    rating = (ratingTotal)/(numberOfRates);
+                }
+
+                // 4- actualizamos el post
+                // actualizamos score, totalScore, numberOfRatings
+                var queryUpdate = {
+                    sql: "UPDATE Posts SET score=@rating totalScore=@totalScore numberOfRatings=@numberOfRatings WHERE id=@id",
+                    parameters:[{name:"id", value: req.query.id},
+                        {name:"rating", value:rating},
+                        {name:"totalScore", value: ratingTotal},
+                        {name:"numberOfRates", value:numberOfRates}]
+                };
+                req.azureMobile.data.execute(queryUpdate)
+                    .then(function (results) {
+                       res.json(results)
+                    });
             });
 
-        // 3- calculamos rating con los datos de la query
-        var rating;
-        if (post !== undefined) {
-            var ratingTotal = post.score;
-            var numberOfRates = post.numberOfRatings;
-            rating = (req.query.rating + ratingTotal)/(1 + numberOfRates);
-        }
-
-        // 4- actualizamos el post
-        var queryUpdate = {
-            sql: "UPDATE Posts SET score=@rating WHERE id=@id",
-            parameters:[{name:"id", value: req.query.id},
-                {name:"rating", value:rating}]
-        };
-        // context.execute(queryUpdate);
-
-        // var post = context.query.where({id:req.query.id});
-
-        req.azureMobile.data.execute(queryUpdate)
-            .then(function (results) {
-               res.json(results)
-            });
     }
 
 };
