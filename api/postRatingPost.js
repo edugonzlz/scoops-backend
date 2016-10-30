@@ -19,7 +19,7 @@ var postRatingPost = {
 
         req.azureMobile.data.execute(query)
             .then(function (results) {
-                console.log("**Post: " + results);
+                console.log("**Post: " + json(results));
 
                 var post = results;
                 var rating;
